@@ -1,0 +1,1296 @@
+{
+  "info": {
+    "_postman_id": "18043d36-7c82-46be-8451-e0245d3750c6",
+    "name": "Event Booking API",
+    "description": "### Welcome to Event Booking API.\n\nAdmin User can manage Events, Attendee and Bookings:\n\n• Event create, edit, list & delete  \n• Attendees create, edit, list & delete  \n• Create, list and delete Bookings\n\nAPI payload and response date format `Y-m-d H:i:s`\n\n[Click here for intallation guide:](https://github.com/Harjinderkumar/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51607221",
+    "_collection_link": "https://go.postman.co/collection/51607221-18043d36-7c82-46be-8451-e0245d3750c6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth Endpoint (Admin)",
+      "item": [
+        {
+          "name": "Admin Login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"superadmin@test.com\",\r\n    \"password\": \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/login",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"superadmin@test.com\",\r\n    \"password\": \"12345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/login",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 19:54:35 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "211"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3Njg4NTI0NzYsImV4cCI6MTc2ODg1NjA3Nn0.t0eixUQQVT32wOl7dkQTL57raUZs2I5F-1wAdoaFHi4\",\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 3600\n}"
+            }
+          ]
+        }
+      ],
+      "description": "This endpoint for get token**,** pass user email and password in payload. Set response token value in **{{AUTH_TOKEN}}** global variable."
+    },
+    {
+      "name": "Manage Events (Admin)",
+      "item": [
+        {
+          "name": "Create Event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"name\": \"Magic Show\",\n    \"description\": \"This is SHow\",\n    \"event_date\": \"2026-03-01 10:00:00\", // Y-m-d H:i:s\n    \"capacity\": \"60\",\n    \"country_code\": \"GB\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/event",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "event"
+              ]
+            },
+            "description": "This is a POST request, submitting json data to an API via the request body for Create event. This request submits JSON data.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+          },
+          "response": [
+            {
+              "name": "response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"Magic Show\",\n    \"description\": \"This is SHow\",\n    \"event_date\": \"2026-03-01 10:00:00\", // Y-m-d H:i:s\n    \"capacity\": \"60\",\n    \"country_code\": \"GB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/event",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "event"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 19:56:22 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "68"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Event created successfully\",\n    \"event_id\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "List Events",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/event?page=1&limit=5&country_code=GB",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "event"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                },
+                {
+                  "key": "country_code",
+                  "value": "GB"
+                }
+              ]
+            },
+            "description": "This is a GET request and it is used to list events data from an endpoint. You can use query parameters to help specify the resource you want data on (e.g., `page=1` `limit = 10` `country_code = GB`) .\n\nA successful GET response will have a `200 OK` status, and response body"
+          },
+          "response": [
+            {
+              "name": "List Events",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/event?page=1&limit=5&country_code=GB",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "event"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "country_code",
+                      "value": "GB"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:25:32 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "295"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"success\": 1,\n        \"data\": [\n            {\n                \"id\": 3,\n                \"user_id\": 1,\n                \"name\": \"Magic Show\",\n                \"description\": \"This is SHow\",\n                \"event_date\": \"2026-03-01 10:00:00\",\n                \"capacity\": 60,\n                \"booked_slots\": 0,\n                \"country_code\": \"GB\",\n                \"created_at\": \"2026-01-19 21:25:27\",\n                \"updated_at\": \"2026-01-19 21:25:27\"\n            }\n        ],\n        \"meta\": {\n            \"page\": 1,\n            \"limit\": 5,\n            \"total\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Event",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"name\": \"Commedy Show 11\",\r\n    \"description\": \"This is massive Commedy SHow\",\r\n    \"event_date\": \"2026-03-01 10:00:00\", // Y-m-d H:i:s\r\n    \"capacity\": \"1\",\r\n    \"country_code\": \"DE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/event?id=1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "event"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "This endpoint for update event data through JSON payload. Pass event id in query parameter `id = 1`"
+          },
+          "response": [
+            {
+              "name": "Update Event",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\t\"name\": \"Commedy Show 11\",\r\n    \"description\": \"This is massive Commedy SHow\",\r\n    \"event_date\": \"2026-03-01 10:00:00\", // Y-m-d H:i:s\r\n    \"capacity\": \"1\",\r\n    \"country_code\": \"DE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/event?id=3",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "event"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:25:56 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Event updated successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Event",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/event?id=1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "event"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Endpoint for delete event. Pass event id in query parameter `id = 1`"
+          },
+          "response": [
+            {
+              "name": "Delete Event",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{BASE_URL}}/api/event?id=3",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "event"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:26:07 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Event deleted successfully\"\n}"
+            }
+          ]
+        }
+      ],
+      "description": "Endpoint for create, edit, list and delete event. You can use pagination and country code filter for get specific events."
+    },
+    {
+      "name": "Manage Attendees (Admin)",
+      "item": [
+        {
+          "name": "Create Attendee",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"James Test\",\r\n    \"email\": \"Jamestest@gmail.com\" \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/attendee",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "attendee"
+              ]
+            },
+            "description": "Endpoint for create new attendee. Pass name and email in JSON payload. Email must be unique and correct."
+          },
+          "response": [
+            {
+              "name": "Create Attendee",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"James Test\",\r\n    \"email\": \"Jamestest@gmail.com\" \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/attendee",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "attendee"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:28:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "74"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Attendee created successfully\",\n    \"attendee_id\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "List Attendees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/attendee",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "attendee"
+              ]
+            },
+            "description": "User can list all the attendees data."
+          },
+          "response": [
+            {
+              "name": "List Attendees",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BASE_URL}}/api/attendee",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "attendee"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:29:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "307"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"name\": \"James Test12\",\n            \"email\": \"Jamestest12@gmail.com\",\n            \"created_at\": \"2026-01-19 19:57:14\",\n            \"updated_at\": \"2026-01-19 19:57:14\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"name\": \"James ttt\",\n            \"email\": \"Jamett@gmail.com\",\n            \"created_at\": \"2026-01-19 19:58:40\",\n            \"updated_at\": \"2026-01-19 19:58:40\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Attendee",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"James Test 113\",\r\n    \"email\": \"Jamestest113@gmail.com\" // added check duplicate email for user validation\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/attendee?id=1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "attendee"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Update attendee data. Pass attendee id in query parameter `id=1`"
+          },
+          "response": [
+            {
+              "name": "Update Attendee",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"James Test 113\",\r\n    \"email\": \"Jamestest113@gmail.com\" // added check duplicate email for user validation\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/attendee?id=3",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "attendee"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:28:54 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Attendee updated successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Attendee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/attendee?id=1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "attendee"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "User can delete attendee from system. Pass attendee id in query parameter `id=1`"
+          },
+          "response": [
+            {
+              "name": "Delete Attendee",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{BASE_URL}}/api/attendee?id=3",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "attendee"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:29:06 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Attendee deleted successfully\"\n}"
+            }
+          ]
+        }
+      ],
+      "description": "User can create, list, update and delete attendee."
+    },
+    {
+      "name": "Manage Bookings (Admin)",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"event_id\": \"2\",\r\n    \"attendee_id\": \"2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/booking",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "booking"
+              ]
+            },
+            "description": "User can create new specific event booking for specific attendee. **We are supporting duplicate booking and overbooking validation feature.**"
+          },
+          "response": [
+            {
+              "name": "Create Booking",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"event_id\": \"2\",\r\n    \"attendee_id\": \"2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/booking",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "booking"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:29:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "72"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Booking created successfully\",\n    \"booking_id\": 2\n}"
+            }
+          ]
+        },
+        {
+          "name": "List Booking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/booking",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "booking"
+              ]
+            },
+            "description": "Endpoint for list bookings."
+          },
+          "response": [
+            {
+              "name": "List Booking",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BASE_URL}}/api/booking",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "booking"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:30:22 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "294"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"event\": {\n                \"id\": 1,\n                \"name\": \"Commedy Show 11\"\n            },\n            \"attendee\": {\n                \"id\": 1,\n                \"email\": \"Jamestest12@gmail.com\"\n            },\n            \"booked_at\": \"2026-01-19 20:04:11\"\n        },\n        {\n            \"id\": 2,\n            \"event\": {\n                \"id\": 2,\n                \"name\": \"Commedy Show 11\"\n            },\n            \"attendee\": {\n                \"id\": 2,\n                \"email\": \"Jamett@gmail.com\"\n            },\n            \"booked_at\": \"2026-01-19 21:29:45\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"event_id\": \"1\",\r\n    \"attendee_id\": \"2\"\r\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/booking?id=1",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "booking"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Endpoint fot delete booking."
+          },
+          "response": [
+            {
+              "name": "Delete Booking",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"event_id\": \"1\",\r\n    \"attendee_id\": \"2\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/booking?id=2",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "booking"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:30:57 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "57"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Booking deleted successfully\"\n}"
+            }
+          ]
+        }
+      ],
+      "description": "User can create new specific event booking for specific attendee, list all the bookings and delete bookings"
+    },
+    {
+      "name": "Attendee Regiter (Public Endpoint)",
+      "item": [
+        {
+          "name": "Attendee Register",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Bill Kate\",\r\n    \"email\": \"billkate@gmail.com\" // added check duplicate email for user validation,\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/attendee/regsiter",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "api",
+                "attendee",
+                "regsiter"
+              ]
+            },
+            "description": "Endpoint for register attendee without authorization. Email must be unique."
+          },
+          "response": [
+            {
+              "name": "Attendee Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Bill Kate\",\r\n    \"email\": \"billkate@gmail.com\" // added check duplicate email for user validation,\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BASE_URL}}/api/attendee/regsiter",
+                  "host": [
+                    "{{BASE_URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "attendee",
+                    "regsiter"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 21:31:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.66 (Debian)"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.2.30"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "74"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Attendee created successfully\",\n    \"attendee_id\": 4\n}"
+            }
+          ]
+        }
+      ],
+      "description": "Public customer/user can register new attendee without authorization."
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{AUTH_TOKEN}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": ""
+    }
+  ]
+}

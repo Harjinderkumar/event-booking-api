@@ -1,0 +1,37 @@
+EVENT BOOKING REST API
+ 
+THE USER MUST BE AUTHENTICATED
+ Users can Manage Events (create, update, delete and list(pagination/filtering)  )  - EVENT
+ User can register and manage event attendees infomation    - ATTENDEES 
+ User can book an event (prevent overbooking & duplicate booking)
+
+ Attendees should be able to register without authentication. 
+ Locations should be country-based rather than specific addresses. 
+
+ Consider capacity limitations when booking an event. 
+ The API should return structured, meaningful responses. 
+
+
+
+docker-compose down -v
+
+docker-compose up --build
+
+docker exec -it event_api_app ./tools/phpunit
+
+
+Event Management API
+  Admin User can create, update, delete and list events with pagination and country filter. He can manage attendees(create, edit, update and delete).
+  Also, he can create, edit and delete event booking for attendees.
+
+Installation Process
+  - Clone the Repository.
+  - Run the docker command on project root "docker-compose up --build"
+  - Command "docker exec -it event_api_app ./tools/phpunit" for run unit testing
+  
+  Database Structure 
+    src="data/db-schema.png"
+
+  Prerequisites
+    - Docker 
+    - Git Client
