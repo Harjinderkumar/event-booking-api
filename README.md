@@ -3,6 +3,10 @@
 Admin User can create, update, delete and list events with pagination and country filter. He can manage attendees(create, edit, update and delete).
   Also, he can create, edit and delete event booking for attendees.
 
+  1. It prevents duplicate event booking
+  2. It prevents overbooking event
+  3. It prevents duplicate attendee
+
 ## Installation
 
 Use the git for clone repository
